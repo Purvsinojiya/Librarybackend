@@ -4,15 +4,16 @@ const Signups = require('../model/Signup.js');
 const Login = require('../model/Login.js');
 const Book = require('../model/books');
 const Userbook = require('../model/userbook');
+const issuedbooksss = require('../model/issuedbook');
 const signup = async (req, res, next) => {
-    const {Fullname, Mobilenumber, EmailID, Password,ConfirmPassword } = req.body;
+    const {Fullname, Mobilenumber, EmailID, Password,Collage_id } = req.body;
      
-    if (!Fullname || !Mobilenumber || !EmailID || !Password || !ConfirmPassword) {
+    if (!Fullname || !Mobilenumber || !EmailID || !Password ||!Collage_id) {
     return res.status(400).json({ message: 'Please provide all the required fields' });
     }
     
   
-    const user = await Signups.create({ Fullname, Mobilenumber, EmailID, Password, ConfirmPassword });
+    const user = await Signups.create({ Fullname, Mobilenumber, EmailID, Password,Collage_id });
     
     
     
@@ -34,7 +35,7 @@ const signup = async (req, res, next) => {
         }
       
         try {
-          if (EmailID === '9925437458' && Password === 'purv123') {
+          if (EmailID === 'admin@gmail.com' && Password === 'admin') {
             // If number and password match, consider it an admin login
             // Send a JSON response with the redirection URL
             return res.status(200).json({ redirectTo: '/admin-dashboard' }); // Change '/admin-dashboard' to your actual admin dashboard route
@@ -73,16 +74,19 @@ const signup = async (req, res, next) => {
         }
       };
       const issuedbooks = async (req, res, next) => {
-        const {userId} = req.body;
+        const { Collage_id } = req.body; // Change userId to Collage_id
         try {
-          // Find all books with bookStatus set to "Available"
-          const availableBooks = await Userbook.find({ userId: userId });
-          res.json(availableBooks);
+          // Find all books issued to the user with the given Collage_id
+          const issuedBooks = await issuedbooksss.find({ Collage_id: Collage_id });
+          res.json(issuedBooks);
         } catch (error) {
           console.error(error);
           res.status(500).json({ message: 'Internal Server Error' });
         }
       };
+      
+      module.exports = { issuedbooks };
+      
 
     
     module.exports = { signup,login,avaiblebook,issuedbooks};

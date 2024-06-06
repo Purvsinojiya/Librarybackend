@@ -6,6 +6,6 @@ const {signup,login,avaiblebook,issuedbooks} = require("../Controler/userControl
 userRouter.post('/Signup',signup);
 userRouter.post('/login',login);
 userRouter.get('/avaiblebook',avaiblebook);
-userRouter.get('/issuedbook',issuedbooks);
+userRouter.post('/issuedbook',issuedbooks);
 
 module.exports = userRouter;

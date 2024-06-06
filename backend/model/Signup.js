@@ -16,12 +16,12 @@ const SignupSchema = new Schema({
     required: true,
     minlength: 6,
   },
-  Password: {
+  Collage_id: {
     type: String,
     required: true,
     minlength: 6,
   },
-  ConfirmPassword: {
+ Password: {
     type: String,
     required: true,
     minlength: 6,

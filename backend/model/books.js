@@ -6,6 +6,10 @@ const bookSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  Image: {
+    type: String,
+    required: true,
+  },
   category: {
     type: String,
     required: true,
@@ -14,7 +18,7 @@ const bookSchema = new mongoose.Schema({
     type: String,
     enum: ['Available', 'Not Available'],
     default: 'Available', // Default status is "Available"
-  },
+  }
 });
 
 // Create a model based on the schema

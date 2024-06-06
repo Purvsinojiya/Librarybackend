@@ -16,10 +16,14 @@ const issuebookSchema = new Schema({
     enum: ['Available', 'Not Available'],
     default: 'Available', // Default status is "Available"
   },
-  userId: {
-    type: Schema.Types.ObjectId,
-    ref: 'Signup', // Assuming 'Signup' is the name of your user model
+  Image: {
+    type: String,
     required: true,
+  },
+  Collage_id: {
+    type: String,
+    required: true,
+    minlength: 6,
   },
 });
 

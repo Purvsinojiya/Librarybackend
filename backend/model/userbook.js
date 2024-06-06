@@ -11,8 +11,8 @@ const userbookSchema = new Schema({
     type: String,
     required: true,
   },
-  userId: {
-    type: Schema.Types.ObjectId,
+  Collage_id: {
+    type: String,
     ref: 'Signup', // Assuming 'Signup' is the name of your user model
     required: true,
   },

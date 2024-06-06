@@ -12,11 +12,6 @@ const LoginSchema = new Schema({
     required: true,
     minlength: 6,
   },
-  userId: {
-    type: Schema.Types.ObjectId,
-    ref: 'Signup',
-    required: true,
-  },
   issuedBooks: 
     {
       type: String,
